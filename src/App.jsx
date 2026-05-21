@@ -6,12 +6,14 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import { ProgressProvider } from '@/lib/useProgress.jsx';
+import { ThemeProvider } from '@/lib/ThemeProvider';
 import AppLayout from '@/components/sommelier/AppLayout';
 import Landing from '@/pages/Landing';
 import Map from '@/pages/Map';
 import Lesson from '@/pages/Lesson';
 import Quiz from '@/pages/Quiz';
 import Certificate from '@/pages/Certificate';
+import Settings from '@/pages/Settings';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -46,6 +48,7 @@ const AuthenticatedApp = () => {
           <Route path="/lesson/:dayNum" element={<Lesson />} />
           <Route path="/quiz/:dayNum" element={<Quiz />} />
           <Route path="/certificate" element={<Certificate />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -57,14 +60,16 @@ const AuthenticatedApp = () => {
 function App() {
 
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClientInstance}>
-        <Router>
-          <AuthenticatedApp />
-        </Router>
-        <Toaster />
-      </QueryClientProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <QueryClientProvider client={queryClientInstance}>
+          <Router>
+            <AuthenticatedApp />
+          </Router>
+          <Toaster />
+        </QueryClientProvider>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
