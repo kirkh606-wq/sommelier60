@@ -14,6 +14,7 @@ import Lesson from '@/pages/Lesson';
 import Quiz from '@/pages/Quiz';
 import Certificate from '@/pages/Certificate';
 import Settings from '@/pages/Settings';
+import AppStoreAssets from '@/pages/AppStoreAssets';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -49,6 +50,7 @@ const AuthenticatedApp = () => {
           <Route path="/quiz/:dayNum" element={<Quiz />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/app-store-assets" element={<AppStoreAssets />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
