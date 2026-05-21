@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useProgress } from '@/lib/useProgress.jsx';
 import { WEEKS, DAYS, getWeekDays } from '@/lib/courseData';
 import { loadCourseData } from '@/lib/loadCourseData';
@@ -8,12 +8,38 @@ import { motion } from 'framer-motion';
 export default function Map() {
   const { progress, getNextOpenDay } = useProgress();
   const [dataLoaded, setDataLoaded] = useState(DAYS.length > 0);
+  const [refreshing, setRefreshing] = useState(false);
+  const touchStartY = useRef(0);
+  const touchDeltaY = useRef(0);
 
   useEffect(() => {
     if (!dataLoaded) {
       loadCourseData().then(() => setDataLoaded(true));
     }
   }, [dataLoaded]);
+
+  const handleRefresh = useCallback(async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    await loadCourseData();
+    setRefreshing(false);
+  }, [refreshing]);
+
+  function onTouchStart(e) {
+    touchStartY.current = e.touches[0].clientY;
+    touchDeltaY.current = 0;
+  }
+
+  function onTouchMove(e) {
+    touchDeltaY.current = e.touches[0].clientY - touchStartY.current;
+  }
+
+  function onTouchEnd() {
+    if (window.scrollY === 0 && touchDeltaY.current > 70) {
+      handleRefresh();
+    }
+    touchDeltaY.current = 0;
+  }
 
   const nextOpen = getNextOpenDay();
 
@@ -44,7 +70,18 @@ export default function Map() {
   const activeWeeks = WEEKS.filter(w => getWeekDays(w.num).length > 0);
 
   return (
-    <div className="pt-[84px] pb-16 px-5 max-w-[860px] mx-auto">
+    <div
+      className="pt-[84px] pb-16 px-5 max-w-[860px] mx-auto"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      {/* Pull-to-refresh indicator */}
+      {refreshing && (
+        <div className="flex justify-center mb-3 -mt-4">
+          <div className="w-7 h-7 border-4 border-border border-t-primary rounded-full animate-spin" />
+        </div>
+      )}
       {/* Header */}
       <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
         <div>

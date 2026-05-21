@@ -5,6 +5,7 @@ import { loadCourseData } from '@/lib/loadCourseData';
 import { useProgress } from '@/lib/useProgress.jsx';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D'];
 
@@ -162,8 +163,21 @@ export default function Quiz() {
 
   return (
     <div className="pt-[84px] pb-20 px-5 max-w-[700px] mx-auto">
+      {/* Quiz header with exit button */}
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-sm font-bold text-muted-foreground">Q {qIndex + 1} of {total}</span>
+        <button
+          onClick={() => navigate('/map')}
+          className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-border transition-colors"
+          style={{ WebkitTouchCallout: 'none', userSelect: 'none' }}
+          aria-label="Exit quiz"
+        >
+          <X className="w-4 h-4 text-muted-foreground" />
+        </button>
+      </div>
+
       {/* Progress bar */}
-      <div className="h-3 bg-border rounded-full overflow-hidden mb-3">
+      <div className="h-3 bg-border rounded-full overflow-hidden mb-4">
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{
@@ -171,10 +185,6 @@ export default function Quiz() {
             background: 'linear-gradient(90deg, var(--gold), var(--rose))',
           }}
         />
-      </div>
-
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-sm font-bold text-muted-foreground">Q {qIndex + 1} of {total}</span>
       </div>
 
       {/* Retry box */}
