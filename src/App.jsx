@@ -5,7 +5,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-// Add page imports here
+import { ProgressProvider } from '@/lib/useProgress.jsx';
+import AppLayout from '@/components/sommelier/AppLayout';
+import Landing from '@/pages/Landing';
+import Map from '@/pages/Map';
+import Lesson from '@/pages/Lesson';
+import Quiz from '@/pages/Quiz';
+import Certificate from '@/pages/Certificate';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -32,10 +38,18 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
-      {/* Add your page Route elements here */}
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <ProgressProvider>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/lesson/:dayNum" element={<Lesson />} />
+          <Route path="/quiz/:dayNum" element={<Quiz />} />
+          <Route path="/certificate" element={<Certificate />} />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </ProgressProvider>
   );
 };
 

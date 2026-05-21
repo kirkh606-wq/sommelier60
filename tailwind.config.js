@@ -4,6 +4,10 @@ module.exports = {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
+  		fontFamily: {
+  			nunito: ['var(--font-nunito)'],
+  			fraunces: ['var(--font-fraunces)'],
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -85,5 +89,12 @@ module.exports = {
   		}
   	}
   },
+  safelist: [
+    'bg-purple-100', 'text-purple-800',
+    'bg-amber-100', 'text-amber-800',
+    'bg-sky-100', 'text-sky-700',
+    'bg-emerald-100', 'text-emerald-800',
+    'bg-pink-100', 'text-pink-700',
+  ],
   plugins: [require("tailwindcss-animate")],
 }

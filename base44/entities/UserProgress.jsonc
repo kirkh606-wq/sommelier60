@@ -1,0 +1,46 @@
+{
+  "name": "UserProgress",
+  "type": "object",
+  "properties": {
+    "completed_days": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "default": [],
+      "description": "Array of completed day numbers"
+    },
+    "quiz_done": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "default": [],
+      "description": "Array of day numbers where quiz was passed"
+    },
+    "xp": {
+      "type": "number",
+      "default": 0,
+      "description": "Total XP earned"
+    },
+    "level": {
+      "type": "number",
+      "default": 1,
+      "description": "Current level"
+    },
+    "streak": {
+      "type": "number",
+      "default": 0,
+      "description": "Current day streak"
+    },
+    "last_completed_date": {
+      "type": "string",
+      "description": "ISO date of last completed day"
+    },
+    "student_name": {
+      "type": "string",
+      "description": "Name for the certificate"
+    }
+  },
+  "required": []
+}

@@ -1,88 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --font-nunito: 'Nunito', sans-serif;
+    --font-fraunces: 'Fraunces', serif;
+
+    --background: 40 100% 98%;
+    --foreground: 270 52% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 270 52% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 270 52% 10%;
+    --primary: 275 44% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 275 60% 95%;
+    --secondary-foreground: 275 44% 30%;
+    --muted: 275 30% 95%;
+    --muted-foreground: 275 20% 50%;
+    --accent: 40 89% 55%;
+    --accent-foreground: 40 89% 20%;
+    --destructive: 12 76% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --border: 275 40% 92%;
+    --input: 275 40% 92%;
+    --ring: 275 44% 44%;
+    --chart-1: 275 44% 44%;
+    --chart-2: 40 89% 55%;
+    --chart-3: 150 65% 36%;
+    --chart-4: 340 76% 58%;
+    --chart-5: 207 65% 51%;
+    --radius: 1.25rem;
+
+    --grape: #7C3FA0;
+    --grape-light: #F0E6FA;
+    --grape-dark: #4E2570;
+    --gold: #C9952A;
+    --gold-light: #FEF3DC;
+    --sun: #F5A623;
+    --sun-dark: #C07A0A;
+    --vine: #22A05A;
+    --vine-light: #E2F8ED;
+    --vine-dark: #166B3C;
+    --rose: #E8458A;
+    --rose-light: #FDE8F2;
+    --sky: #2D8FD5;
+    --sky-light: #E5F3FD;
+    --terra: #D95432;
+    --terra-light: #FDEAE5;
+    --cream: #FFFCF5;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: 275 44% 44%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 275 30% 95%;
+    --sidebar-accent-foreground: 275 44% 30%;
+    --sidebar-border: 275 40% 92%;
+    --sidebar-ring: 275 44% 44%;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 270 52% 6%;
+    --foreground: 40 100% 97%;
+    --card: 270 40% 10%;
+    --card-foreground: 40 100% 97%;
+    --popover: 270 40% 10%;
+    --popover-foreground: 40 100% 97%;
+    --primary: 275 50% 60%;
+    --primary-foreground: 270 52% 6%;
+    --secondary: 270 30% 16%;
+    --secondary-foreground: 40 100% 97%;
+    --muted: 270 20% 16%;
+    --muted-foreground: 275 15% 60%;
+    --accent: 40 89% 55%;
+    --accent-foreground: 270 52% 6%;
+    --destructive: 12 60% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 270 20% 18%;
+    --input: 270 20% 18%;
+    --ring: 275 50% 60%;
+    --chart-1: 275 50% 60%;
+    --chart-2: 40 89% 55%;
+    --chart-3: 150 55% 45%;
+    --chart-4: 340 66% 55%;
+    --chart-5: 207 55% 55%;
+
+    --sidebar-background: 270 40% 8%;
+    --sidebar-foreground: 40 100% 97%;
+    --sidebar-primary: 275 50% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 270 20% 14%;
+    --sidebar-accent-foreground: 40 100% 97%;
+    --sidebar-border: 270 20% 18%;
+    --sidebar-ring: 275 50% 60%;
   }
 }
-
-
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-nunito;
+    -webkit-tap-highlight-color: transparent;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 }
+
+/* Custom animations */
+@keyframes wobble {
+  0%, 100% { transform: rotate(-6deg) scale(1); }
+  50% { transform: rotate(6deg) scale(1.08); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 6px 0 var(--sun-dark), 0 4px 20px rgba(124,63,160,.10); }
+  50% { box-shadow: 0 8px 0 var(--sun-dark), 0 6px 32px rgba(201,149,42,.22); }
+}
+
+@keyframes xp-float {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  30% { transform: translateY(-28px) scale(1.25); opacity: 1; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-9px); }
+  40% { transform: translateX(9px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+@keyframes correctPop {
+  0% { transform: scale(0.94); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-wobble { animation: wobble 3.5s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.8s ease-in-out infinite; }
+.animate-xp-float { animation: xp-float 1.4s ease forwards; }
+.animate-shake { animation: shake 0.4s ease; }
