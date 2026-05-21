@@ -6,7 +6,7 @@ import { useProgress } from '@/lib/useProgress.jsx';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Sun, Moon, Trash2, LogOut, ChevronRight, User } from 'lucide-react';
+import { Sun, Moon, Trash2, LogOut, ChevronRight, User, Image } from 'lucide-react';
 
 export default function Settings() {
   const navigate = useNavigate();
@@ -82,6 +82,21 @@ export default function Settings() {
             <Trash2 className="w-5 h-5 text-destructive" />
             <span className="font-bold flex-1 text-left text-destructive">Delete Account</span>
             <ChevronRight className="w-4 h-4 text-destructive/60" />
+          </button>
+        </div>
+
+        {/* App Store Assets */}
+        <div className="bg-card border-2 border-border rounded-2xl overflow-hidden mb-4">
+          <div className="px-5 py-3 border-b border-border">
+            <span className="text-xs font-black text-muted-foreground uppercase tracking-wider">Developer</span>
+          </div>
+          <button
+            onClick={() => navigate('/app-store-assets')}
+            className="w-full flex items-center gap-3 px-5 py-4 hover:bg-secondary/50 transition-colors"
+          >
+            <Image className="w-5 h-5 text-primary" />
+            <span className="font-bold flex-1 text-left">App Store Assets</span>
+            <ChevronRight className="w-4 h-4 text-muted-foreground" />
           </button>
         </div>
 
