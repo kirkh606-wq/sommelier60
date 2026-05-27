@@ -9,240 +9,252 @@ export default function Certificate() {
   const { progress } = useProgress();
   const [credId] = useState(() => 'S60-' + Math.floor(100000 + Math.random() * 900000));
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  const studentName = progress.student_name || 'Student';
+  const studentName = progress.student_name || 'Your Name';
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen pt-[84px] pb-16 px-4">
-
-      {/* Landscape Certificate */}
+    <div
+      className="min-h-screen flex flex-col items-center justify-center pt-[84px] pb-16 px-4"
+      style={{ background: 'linear-gradient(160deg, #1a0a0a 0%, #2e1010 50%, #1a0a0a 100%)' }}
+    >
+      {/* Certificate */}
       <motion.div
         className="w-full"
-        style={{ maxWidth: '860px' }}
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', damping: 18, delay: 0.1 }}
+        style={{ maxWidth: '900px' }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        {/* Outer dark frame */}
-        <div
-          className="p-2.5 rounded-2xl"
-          style={{
-            background: 'linear-gradient(135deg, #1a0808, #3d1018)',
-            boxShadow: '0 32px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,149,42,0.2)',
-          }}
-        >
-          {/* Gold gradient border */}
-          <div
-            className="p-[2px] rounded-xl"
-            style={{ background: 'linear-gradient(135deg, #C9952A, #F5D98B, #C9952A, #8B6914, #F5D98B, #C9952A)' }}
-          >
-            {/* Cream parchment body */}
-            <div
-              className="relative rounded-xl overflow-hidden"
-              style={{ background: 'linear-gradient(160deg, #FFFEF8 0%, #FAF3DC 40%, #FDF8EC 70%, #FFFEF8 100%)' }}
-            >
-              {/* Subtle diagonal grid watermark */}
-              <div className="absolute inset-0 pointer-events-none opacity-[0.035]"
-                style={{
-                  backgroundImage: 'repeating-linear-gradient(45deg, #7C3FA0 0, #7C3FA0 1px, transparent 0, transparent 24px)',
-                  backgroundSize: '24px 24px'
-                }}
-              />
+        {/* Outermost shadow frame */}
+        <div style={{
+          boxShadow: '0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,149,42,0.3)',
+          borderRadius: '4px',
+        }}>
+          {/* Gold outer border */}
+          <div style={{
+            background: 'linear-gradient(135deg, #C9952A 0%, #F5D98B 25%, #8B6914 50%, #F5D98B 75%, #C9952A 100%)',
+            padding: '6px',
+            borderRadius: '4px',
+          }}>
+            {/* Dark inner mat */}
+            <div style={{
+              background: '#1a0808',
+              padding: '10px',
+              borderRadius: '2px',
+            }}>
+              {/* Gold inner border */}
+              <div style={{
+                background: 'linear-gradient(135deg, #C9952A 0%, #F5D98B 25%, #8B6914 50%, #F5D98B 75%, #C9952A 100%)',
+                padding: '2px',
+                borderRadius: '1px',
+              }}>
+                {/* Parchment body */}
+                <div
+                  style={{
+                    background: 'linear-gradient(160deg, #FEFCF0 0%, #F8F0D8 30%, #FDF5E4 60%, #FEFCF2 100%)',
+                    padding: '48px 56px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {/* Parchment texture overlay */}
+                  <div style={{
+                    position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04,
+                    backgroundImage: 'repeating-linear-gradient(0deg, #6B3F2A 0, #6B3F2A 1px, transparent 0, transparent 12px), repeating-linear-gradient(90deg, #6B3F2A 0, #6B3F2A 1px, transparent 0, transparent 12px)',
+                  }} />
 
-              {/* Corner ornaments */}
-              <svg className="absolute top-0 left-0 w-24 h-24 pointer-events-none" viewBox="0 0 96 96" fill="none">
-                <path d="M8,8 L8,40 M8,8 L40,8" stroke="#C9952A" strokeWidth="2"/>
-                <path d="M8,8 L8,24 M8,8 L24,8" stroke="#C9952A" strokeWidth="1" opacity="0.5"/>
-                <circle cx="8" cy="8" r="4" fill="#C9952A"/>
-                <circle cx="8" cy="8" r="2" fill="#F5D98B"/>
-              </svg>
-              <svg className="absolute top-0 right-0 w-24 h-24 pointer-events-none" viewBox="0 0 96 96" fill="none">
-                <path d="M88,8 L88,40 M88,8 L56,8" stroke="#C9952A" strokeWidth="2"/>
-                <path d="M88,8 L88,24 M88,8 L72,8" stroke="#C9952A" strokeWidth="1" opacity="0.5"/>
-                <circle cx="88" cy="8" r="4" fill="#C9952A"/>
-                <circle cx="88" cy="8" r="2" fill="#F5D98B"/>
-              </svg>
-              <svg className="absolute bottom-0 left-0 w-24 h-24 pointer-events-none" viewBox="0 0 96 96" fill="none">
-                <path d="M8,88 L8,56 M8,88 L40,88" stroke="#C9952A" strokeWidth="2"/>
-                <path d="M8,88 L8,72 M8,88 L24,88" stroke="#C9952A" strokeWidth="1" opacity="0.5"/>
-                <circle cx="8" cy="88" r="4" fill="#C9952A"/>
-                <circle cx="8" cy="88" r="2" fill="#F5D98B"/>
-              </svg>
-              <svg className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none" viewBox="0 0 96 96" fill="none">
-                <path d="M88,88 L88,56 M88,88 L56,88" stroke="#C9952A" strokeWidth="2"/>
-                <path d="M88,88 L88,72 M88,88 L72,88" stroke="#C9952A" strokeWidth="1" opacity="0.5"/>
-                <circle cx="88" cy="88" r="4" fill="#C9952A"/>
-                <circle cx="88" cy="88" r="2" fill="#F5D98B"/>
-              </svg>
+                  {/* Corner ornaments — SVG */}
+                  {[
+                    { top: 0, left: 0, rotate: 0 },
+                    { top: 0, right: 0, rotate: 90 },
+                    { bottom: 0, right: 0, rotate: 180 },
+                    { bottom: 0, left: 0, rotate: 270 },
+                  ].map((pos, i) => (
+                    <svg key={i} width="70" height="70" viewBox="0 0 70 70" style={{ position: 'absolute', ...Object.fromEntries(Object.entries(pos).filter(([k]) => k !== 'rotate')), transform: `rotate(${pos.rotate}deg)`, pointerEvents: 'none' }}>
+                      <path d="M4,4 L4,35 M4,4 L35,4" stroke="#C9952A" strokeWidth="2.5" fill="none"/>
+                      <path d="M4,4 L4,18 M4,4 L18,4" stroke="#C9952A" strokeWidth="1" fill="none" opacity="0.5"/>
+                      <path d="M10,4 L10,14 M4,10 L14,10" stroke="#C9952A" strokeWidth="0.75" fill="none" opacity="0.4"/>
+                      <circle cx="4" cy="4" r="4" fill="#C9952A"/>
+                      <circle cx="4" cy="4" r="2" fill="#F5D98B"/>
+                    </svg>
+                  ))}
 
-              {/* Inner gold rule top */}
-              <div className="mx-14 mt-10">
-                <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)' }} />
-                <div className="h-px mt-1" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,149,42,0.4) 20%, rgba(201,149,42,0.4) 80%, transparent)' }} />
-              </div>
-
-              {/* MAIN LAYOUT: 3-column */}
-              <div className="flex items-stretch px-10 py-6 gap-8">
-
-                {/* LEFT COLUMN — seal + stats */}
-                <div className="flex flex-col items-center justify-between shrink-0 w-32">
-                  {/* Top grape cluster decoration */}
-                  <div className="text-center">
-                    <div className="text-4xl mb-1">🍇</div>
-                    <div className="text-[8px] font-black tracking-[2px] uppercase" style={{ color: '#C9952A' }}>
-                      Est. 2024
+                  {/* TOP: Institution header */}
+                  <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                    <div style={{ fontSize: '11px', fontWeight: 900, letterSpacing: '6px', textTransform: 'uppercase', color: '#C9952A', marginBottom: '4px', fontFamily: 'var(--font-nunito)' }}>
+                      Sommelier in 60 Days
                     </div>
+                    <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)', marginBottom: '2px' }} />
+                    <div style={{ height: '3px', background: 'linear-gradient(90deg, transparent, #8B6914 20%, #8B6914 80%, transparent)', marginBottom: '2px' }} />
+                    <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)' }} />
                   </div>
 
-                  {/* Vertical divider line */}
-                  <div className="flex-1 w-px my-4" style={{ background: 'linear-gradient(180deg, transparent, #C9952A88, transparent)' }} />
+                  {/* MAIN BODY: 3-column */}
+                  <div style={{ display: 'flex', gap: '40px', alignItems: 'stretch' }}>
 
-                  {/* Gold seal */}
-                  <div
-                    className="w-20 h-20 rounded-full flex flex-col items-center justify-center border-4 relative"
-                    style={{
-                      background: 'radial-gradient(circle at 35% 35%, #F5D98B, #C9952A 50%, #8B6914)',
-                      borderColor: '#8B6914',
-                      boxShadow: '0 6px 20px rgba(201,149,42,0.5), inset 0 1px 3px rgba(255,255,255,0.4)'
-                    }}
-                  >
-                    <div className="text-[11px] font-black text-white leading-none text-center drop-shadow">S60</div>
-                    <div className="text-[8px] font-black text-white/90 leading-none mt-0.5">LEVEL 1</div>
-                    <div className="text-[6px] font-black text-white/70 leading-none mt-0.5 tracking-wider">CERTIFIED</div>
-                  </div>
-                </div>
+                    {/* LEFT: Seal column */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', width: '100px', flexShrink: 0 }}>
+                      {/* Grape icon */}
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '36px', lineHeight: 1, marginBottom: '4px' }}>🍇</div>
+                        <div style={{ fontSize: '7px', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#C9952A', fontFamily: 'var(--font-nunito)' }}>Est. 2024</div>
+                      </div>
 
-                {/* CENTER COLUMN — main certificate content */}
-                <div className="flex-1 text-center flex flex-col justify-between">
+                      {/* Vertical rule */}
+                      <div style={{ flex: 1, width: '1px', margin: '16px 0', background: 'linear-gradient(180deg, transparent, #C9952A 30%, #C9952A 70%, transparent)' }} />
 
-                  {/* Institution banner */}
-                  <div>
-                    <div
-                      className="relative mx-auto px-6 py-3 rounded-lg mb-4"
-                      style={{
+                      {/* Gold Seal */}
+                      <div style={{
+                        width: '80px', height: '80px', borderRadius: '50%',
+                        background: 'radial-gradient(circle at 35% 30%, #F5D98B, #C9952A 55%, #7A5010)',
+                        border: '4px solid #8B6914',
+                        boxShadow: '0 6px 24px rgba(201,149,42,0.5), inset 0 2px 4px rgba(255,255,255,0.3)',
+                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <div style={{ fontSize: '13px', fontWeight: 900, color: '#fff', lineHeight: 1, textShadow: '0 1px 2px rgba(0,0,0,0.4)', fontFamily: 'var(--font-nunito)' }}>S·60</div>
+                        <div style={{ fontSize: '8px', fontWeight: 900, color: 'rgba(255,255,255,0.85)', lineHeight: 1, marginTop: '3px', fontFamily: 'var(--font-nunito)' }}>LEVEL I</div>
+                        <div style={{ fontSize: '7px', fontWeight: 900, color: 'rgba(255,255,255,0.7)', lineHeight: 1, marginTop: '2px', letterSpacing: '1px', fontFamily: 'var(--font-nunito)' }}>CERTIFIED</div>
+                      </div>
+                    </div>
+
+                    {/* Vertical divider */}
+                    <div style={{ width: '1px', background: 'linear-gradient(180deg, transparent, #C9952A88 20%, #C9952A88 80%, transparent)', flexShrink: 0 }} />
+
+                    {/* CENTER: Main content */}
+                    <div style={{ flex: 1, textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
+                      <div style={{ fontSize: '10px', fontWeight: 900, letterSpacing: '5px', textTransform: 'uppercase', color: '#7a3020', marginBottom: '10px', fontFamily: 'var(--font-nunito)' }}>
+                        Certificate of Completion
+                      </div>
+
+                      {/* Decorative rule */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', justifyContent: 'center' }}>
+                        <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, #C9952A)' }} />
+                        <span style={{ color: '#C9952A', fontSize: '14px' }}>❧</span>
+                        <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, #C9952A, transparent)' }} />
+                      </div>
+
+                      <p style={{ fontFamily: 'var(--font-fraunces)', fontStyle: 'italic', fontSize: '14px', color: '#8a6040', marginBottom: '6px' }}>
+                        This is to certify that
+                      </p>
+
+                      {/* Student name */}
+                      <div style={{
+                        fontFamily: 'var(--font-fraunces)',
+                        fontSize: 'clamp(28px, 4vw, 46px)',
+                        fontWeight: 700,
+                        color: '#3d0a18',
+                        lineHeight: 1.1,
+                        marginBottom: '6px',
+                      }}>
+                        {studentName}
+                      </div>
+
+                      {/* Name underline */}
+                      <div style={{ height: '2px', background: 'linear-gradient(90deg, transparent, #C9952A 15%, #C9952A 85%, transparent)', margin: '0 40px 16px' }} />
+
+                      <p style={{ fontSize: '11px', fontWeight: 600, color: '#4a2828', lineHeight: 1.7, marginBottom: '18px', fontFamily: 'var(--font-nunito)' }}>
+                        has successfully completed all sixty days of rigorous coursework,<br />
+                        tastings, and examinations required by the
+                      </p>
+
+                      {/* Program name banner */}
+                      <div style={{
                         background: 'linear-gradient(135deg, #3d0a18, #5a1025)',
-                        maxWidth: '420px'
-                      }}
-                    >
-                      {/* Arrow tabs */}
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3">
-                        <div className="w-0 h-0" style={{ borderTop: '18px solid transparent', borderBottom: '18px solid transparent', borderRight: '12px solid #3d0a18' }} />
+                        padding: '10px 20px',
+                        borderRadius: '4px',
+                        marginBottom: '20px',
+                        position: 'relative',
+                        border: '1px solid rgba(201,149,42,0.4)',
+                      }}>
+                        <div style={{ fontSize: '9px', fontWeight: 900, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(245,217,139,0.7)', marginBottom: '3px', fontFamily: 'var(--font-nunito)' }}>
+                          S60 · Level I · Elite Floor Program
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-fraunces)', fontSize: '18px', fontWeight: 700, color: '#F5D98B', letterSpacing: '0.5px' }}>
+                          Sommelier Foundations
+                        </div>
                       </div>
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3">
-                        <div className="w-0 h-0" style={{ borderTop: '18px solid transparent', borderBottom: '18px solid transparent', borderLeft: '12px solid #5a1025' }} />
-                      </div>
-                      <div className="absolute inset-[3px] rounded border pointer-events-none" style={{ borderColor: 'rgba(245,217,139,0.35)' }} />
-                      <div className="text-[9px] font-black tracking-[3px] uppercase mb-0.5" style={{ color: '#F5D98B99' }}>
-                        S60 · Level 1
-                      </div>
-                      <div className="font-fraunces text-lg font-bold text-white tracking-wide">
-                        Sommelier Foundations
-                      </div>
-                      <div className="text-[8px] font-black tracking-[2.5px] uppercase mt-0.5" style={{ color: 'rgba(245,217,139,0.6)' }}>
-                        Elite Floor Program
+
+                      {/* Stats row */}
+                      <div style={{
+                        display: 'flex', justifyContent: 'center', gap: '0',
+                        border: '1px solid rgba(201,149,42,0.35)',
+                        borderRadius: '4px',
+                        overflow: 'hidden',
+                        background: 'rgba(255,255,255,0.5)',
+                      }}>
+                        {[
+                          { value: '60', label: 'Days Completed' },
+                          { value: 'Level I', label: 'Certification' },
+                          { value: 'Floor', label: 'Ready Status' },
+                        ].map((item, i) => (
+                          <div key={i} style={{
+                            flex: 1, textAlign: 'center', padding: '10px 0',
+                            borderLeft: i > 0 ? '1px solid rgba(201,149,42,0.25)' : 'none',
+                          }}>
+                            <div style={{ fontFamily: 'var(--font-fraunces)', fontSize: '15px', fontWeight: 700, color: '#3d0a18' }}>{item.value}</div>
+                            <div style={{ fontSize: '8px', fontWeight: 900, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#9a6a3a', fontFamily: 'var(--font-nunito)' }}>{item.label}</div>
+                          </div>
+                        ))}
                       </div>
                     </div>
 
-                    {/* Certificate of Completion */}
-                    <div className="text-[10px] font-black tracking-[4px] uppercase mb-2" style={{ color: '#5a1025' }}>
-                      Certificate of Completion
-                    </div>
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <div className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, transparent, #C9952A)' }} />
-                      <span className="text-xs" style={{ color: '#C9952A' }}>★</span>
-                      <div className="h-px flex-1 max-w-[80px]" style={{ background: 'linear-gradient(90deg, #C9952A, transparent)' }} />
-                    </div>
+                    {/* Vertical divider */}
+                    <div style={{ width: '1px', background: 'linear-gradient(180deg, transparent, #C9952A88 20%, #C9952A88 80%, transparent)', flexShrink: 0 }} />
 
-                    {/* This certifies that */}
-                    <p className="font-fraunces italic text-sm mb-1" style={{ color: '#8a6040' }}>
-                      This certifies that
-                    </p>
-
-                    {/* Student name — the hero element */}
-                    <div
-                      className="font-fraunces text-[clamp(26px,4vw,40px)] font-bold leading-tight mb-1"
-                      style={{ color: '#3d0a18' }}
-                    >
-                      {studentName}
-                    </div>
-                    <div className="h-px mx-10 mb-3" style={{ background: 'linear-gradient(90deg, transparent, #C9952A77, transparent)' }} />
-
-                    <p className="text-xs font-semibold leading-relaxed" style={{ color: '#4a2828' }}>
-                      has successfully completed the rigorous curriculum and assessments of the<br />
-                      <span className="font-black text-sm" style={{ color: '#3d0a18' }}>S60 Level 1 Sommelier Program</span>
-                    </p>
-                  </div>
-
-                  {/* Stats */}
-                  <div
-                    className="flex justify-around items-center mt-4 py-3 px-4 rounded-xl border"
-                    style={{
-                      background: 'rgba(255,255,255,0.6)',
-                      borderColor: '#C9952A44',
-                      boxShadow: 'inset 0 1px 3px rgba(201,149,42,0.08)'
-                    }}
-                  >
-                    {[
-                      { value: '60', label: 'Days' },
-                      { value: 'Level 1', label: 'Complete' },
-                      { value: 'Floor', label: 'Ready' },
-                    ].map((item, i) => (
-                      <div key={i} className="text-center flex-1 relative">
-                        {i > 0 && <div className="absolute left-0 inset-y-0 w-px" style={{ background: '#C9952A33' }} />}
-                        <div className="font-fraunces text-base font-bold" style={{ color: '#3d0a18' }}>{item.value}</div>
-                        <div className="text-[9px] font-black tracking-wider uppercase" style={{ color: '#9a6a3a' }}>{item.label}</div>
+                    {/* RIGHT: Date & credential */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', width: '100px', flexShrink: 0 }}>
+                      {/* Wine glass */}
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '36px', lineHeight: 1, marginBottom: '4px' }}>🍷</div>
+                        <div style={{ fontSize: '7px', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#C9952A', textAlign: 'center', fontFamily: 'var(--font-nunito)', lineHeight: 1.4 }}>
+                          Sommelier<br/>in 60 Days
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* RIGHT COLUMN — signatures + date */}
-                <div className="flex flex-col justify-between shrink-0 w-32">
-                  {/* Top decoration */}
-                  <div className="text-center">
-                    <div className="text-4xl mb-1">🍷</div>
-                    <div className="text-[8px] font-black tracking-[2px] uppercase text-center" style={{ color: '#C9952A' }}>
-                      Sommelier<br/>in 60 Days
+                      {/* Vertical rule */}
+                      <div style={{ flex: 1, width: '1px', margin: '16px 0', background: 'linear-gradient(180deg, transparent, #C9952A 30%, #C9952A 70%, transparent)' }} />
+
+                      {/* Date block */}
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ width: '80px', height: '1px', background: '#C9952A', marginBottom: '8px' }} />
+                        <div style={{ fontSize: '7px', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#9a6a3a', marginBottom: '4px', fontFamily: 'var(--font-nunito)' }}>Issued</div>
+                        <div style={{ fontSize: '9px', fontWeight: 700, color: '#3d0a18', lineHeight: 1.4, fontFamily: 'var(--font-nunito)' }}>{today}</div>
+                        <div style={{ width: '80px', height: '1px', background: '#C9952A', margin: '8px 0' }} />
+                        <div style={{ fontSize: '7px', fontWeight: 900, letterSpacing: '2px', textTransform: 'uppercase', color: '#9a6a3a', marginBottom: '4px', fontFamily: 'var(--font-nunito)' }}>Credential</div>
+                        <div style={{ fontSize: '8px', fontWeight: 900, color: '#5a1025', fontFamily: 'var(--font-nunito)' }}>{credId}</div>
+                        <div style={{ width: '80px', height: '1px', background: '#C9952A', marginTop: '8px' }} />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Vertical line */}
-                  <div className="flex-1 w-px my-4 mx-auto" style={{ background: 'linear-gradient(180deg, transparent, #C9952A88, transparent)' }} />
-
-                  {/* Date & credential */}
-                  <div className="text-right">
-                    <div className="h-px mb-1" style={{ background: 'linear-gradient(90deg, transparent, #C9952A)' }} />
-                    <div className="text-[8px] font-black tracking-[1.5px] uppercase mb-0.5" style={{ color: '#9a6a3a' }}>Date Issued</div>
-                    <div className="text-[10px] font-black" style={{ color: '#3d0a18' }}>{today}</div>
-
-                    <div className="h-px mt-3 mb-1" style={{ background: 'linear-gradient(90deg, transparent, #C9952A)' }} />
-                    <div className="text-[8px] font-black tracking-[1.5px] uppercase mb-0.5" style={{ color: '#9a6a3a' }}>Credential</div>
-                    <div className="text-[9px] font-black" style={{ color: '#5a1025' }}>{credId}</div>
+                  {/* BOTTOM: triple rule */}
+                  <div style={{ marginTop: '28px' }}>
+                    <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)', marginBottom: '2px' }} />
+                    <div style={{ height: '3px', background: 'linear-gradient(90deg, transparent, #8B6914 20%, #8B6914 80%, transparent)', marginBottom: '2px' }} />
+                    <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)', marginBottom: '6px' }} />
+                    <div style={{ textAlign: 'center', fontSize: '8px', fontWeight: 900, letterSpacing: '4px', textTransform: 'uppercase', color: '#C9952A', fontFamily: 'var(--font-nunito)' }}>
+                      Sommelier in 60 Days · S60 Level I · Authorised Certificate
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Inner gold rule bottom */}
-              <div className="mx-14 mb-10">
-                <div className="h-px mb-1" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,149,42,0.4) 20%, rgba(201,149,42,0.4) 80%, transparent)' }} />
-                <div className="h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent, #C9952A 20%, #C9952A 80%, transparent)' }} />
               </div>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Back button */}
+      {/* Actions */}
       <motion.div
-        className="mt-5"
+        className="flex gap-4 mt-6"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <Button variant="outline" onClick={() => navigate('/map')} className="rounded-xl font-extrabold">
+        <Button variant="outline" onClick={() => navigate('/map')}
+          className="rounded-xl font-extrabold"
+          style={{ borderColor: 'rgba(201,149,42,0.5)', color: '#C9952A', background: 'rgba(201,149,42,0.08)' }}>
           ← Back to Map
         </Button>
       </motion.div>
@@ -250,17 +262,14 @@ export default function Certificate() {
       {/* Review CTA */}
       <motion.div
         className="max-w-[600px] w-full rounded-3xl p-8 text-center mt-6 border-[3px] shadow-lg"
-        style={{
-          background: 'linear-gradient(135deg, var(--gold-light), #FFF9F0)',
-          borderColor: 'var(--gold)',
-        }}
+        style={{ background: 'linear-gradient(135deg, var(--gold-light), #FFF9F0)', borderColor: 'var(--gold)' }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
       >
         <div className="text-4xl mb-3 tracking-wider">⭐⭐⭐⭐⭐</div>
         <h3 className="font-fraunces text-xl font-bold mb-2" style={{ color: 'var(--grape-dark)' }}>
-          You just earned your Level 1 Certificate.
+          You just earned your Level I Certificate.
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
           If this course changed how you think about wine — we'd love a 5-star review. It takes 30 seconds
